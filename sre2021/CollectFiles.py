@@ -42,8 +42,8 @@ def countfiles(dictfiles, lsttokens, repo):
                     shaUrl,
                     headers={
                         'authorization': shaTokenHeader
-                }
-            )
+                    }
+                )
                 shaDetails = json.loads(content.content)
                 filesjson = shaDetails['files']
                 for filenameObj in filesjson:
@@ -57,12 +57,17 @@ def countfiles(dictfiles, lsttokens, repo):
         exit(0)
 
 
-repo = 'scottyab/rootbeer'
+repo1 = 'scottyab/rootbeer'
+repo2 = 'PeterIJia/android_xlight'
+repo3 = 'Skyscanner/backpack'
+repo4 = 'mendhak/gpslogger'
+repo5 = 'k9mail/k-9'
+
 # put your tokens here
 lstTokens = ['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']
-#https://api.github.com/repos/scottyab/rootbeer/commits?page=1\&per_page=100&access_token=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
+
 dictfiles = dict()
-countfiles(dictfiles, lstTokens, repo)
+countfiles(dictfiles, lstTokens, repo1)
 print('Total number of files: ' + str(len(dictfiles)))
 
 file = repo.split('/')[1]
