@@ -13,10 +13,17 @@ def countfiles(dictfiles, lsttokens, repo):
             if ct == len(lstTokens):
                 ct = 0
             spage = str(ipage)
-            commitsUrl = 'https://api.github.com/repos/' + repo + '/commits?page=' + spage + \
-                         '&per_page=100&access_token=' + lsttokens[ct]
+            commitsUrl = 'https://api.github.com/repos/{repo}/commits?page={page}'.format(repo=repo, page=spage)
+            tokenHeader = 'token {}'.format(lsttokens[ct])
+
             ct += 1
-            content = requests.get(commitsUrl)
+            content = requests.get(
+                commitsUrl,
+                headers={
+                    'authorization': tokenHeader
+                }
+            )
+
             jsonCommits = json.loads(content.content)
             # break out of the while loop if there are no more commits in the pages
             if len(jsonCommits) == 0:
@@ -27,26 +34,33 @@ def countfiles(dictfiles, lsttokens, repo):
                 if ct == len(lstTokens):
                     ct = 0
                 # For each commit, use the GitHub commit API to extract the files touched by the commit
-                shaUrl = 'https://api.github.com/repos/' + repo + '/commits/' + sha \
-                         + '?access_token=' + lstTokens[ct]
+                shaUrl = 'https://api.github.com/repos/{repo}/commits/{sha}'.format(repo=repo, sha=sha)
+                shaTokenHeader = 'token {}'.format(lsttokens[ct])
+
                 ct += 1
-                content = requests.get(shaUrl)
+                content = requests.get(
+                    shaUrl,
+                    headers={
+                        'authorization': shaTokenHeader
+                }
+            )
                 shaDetails = json.loads(content.content)
                 filesjson = shaDetails['files']
                 for filenameObj in filesjson:
                     filename = filenameObj['filename']
-                    print(filename)
-                    dictfiles[filename] = dictfiles.get(filename, 0) + 1
+                    if '/src/' in filename:
+                        print(filename)
+                        dictfiles[filename] = dictfiles.get(filename, 0) + 1
             ipage += 1
     except:
         print("Error receiving data")
         exit(0)
 
+
 repo = 'scottyab/rootbeer'
 # put your tokens here
-lstTokens = ['']
-
-
+lstTokens = ['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']
+#https://api.github.com/repos/scottyab/rootbeer/commits?page=1\&per_page=100&access_token=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
 dictfiles = dict()
 countfiles(dictfiles, lstTokens, repo)
 print('Total number of files: ' + str(len(dictfiles)))
