@@ -65,30 +65,12 @@ def countfiles(dictfiles, lsttokens, repo):
 #             'Skyscanner/backpack',
 #             'mendhak/gpslogger',
 #             'k9mail/k-9']
-lstRepos = ['Skyscanner/backpack',
-            'mendhak/gpslogger',
+lstRepos = ['mendhak/gpslogger',
             'k9mail/k-9']
 
 # put your tokens here
-lstTokens = ['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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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',
-             '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']
+lstTokens = ['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',
+             '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']
 
 for repo in lstRepos:
     dictfiles = dict()
