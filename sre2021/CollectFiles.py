@@ -50,7 +50,8 @@ def countfiles(dictfiles, lsttokens, repo):
                 for filenameObj in filesjson:
                     filename = filenameObj['filename']
                     if '/src/' in filename:
-                        extensionList = ['.png', '.gif', '.xml', '.md', '.snap', '.ico', '.xcf', '.jar']
+                        extensionList = ['.png', '.gif', '.xml', '.md', '.snap', '.ico', '.xcf', '.jar', '.txt',
+                                         'jpg', '.svg']
                         if not [ele for ele in extensionList if (ele in filename)]:
                             print(filename)
                             dictfiles[filename] = dictfiles.get(filename, 0) + 1
@@ -60,17 +61,16 @@ def countfiles(dictfiles, lsttokens, repo):
         exit(0)
 
 
-# lstRepos = ['scottyab/rootbeer',
-#             'PeterIJia/android_xlight',
-#             'Skyscanner/backpack',
-#             'mendhak/gpslogger',
-#             'k9mail/k-9']
-lstRepos = ['mendhak/gpslogger',
+lstRepos = ['scottyab/rootbeer',
+            'PeterIJia/android_xlight',
+            'Skyscanner/backpack',
+            'mendhak/gpslogger',
             'k9mail/k-9']
 
 # put your tokens here
-lstTokens = ['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',
-             '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']
+lstTokens = ['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',
+             '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',
+             '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']
 
 for repo in lstRepos:
     dictfiles = dict()
