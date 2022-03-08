@@ -5,20 +5,20 @@ from pydriller import Repository
 #             'backpack.csv',
 #             'gpslogger.csv',
 #             'k-9.csv']
-lstFiles = ['backpack.csv']
+lstFiles = ['k-9.csv']
 
 # lstRepos = ['https://github.com/scottyab/rootbeer.git',
 #             'https://github.com/Skyscanner/backpack.git',
 #             'https://github.com/mendhak/gpslogger.git',
 #             'https://github.com/k9mail/k-9.git']
-lstRepos = ['https://github.com/Skyscanner/backpack.git']
+lstRepos = ['https://github.com/k9mail/k-9.git']
 index = 0
 for sourceFile in lstFiles:
     while index < len(lstRepos):
         with open(sourceFile, newline='') as csvfile:
             file = sourceFile.split('.')[0]
             fileOutput = file + '_author_date.csv'
-            rows = ["Author", "Date"]
+            rows = ["Author", "Date", "Filename"]
             fileCSV = open(fileOutput, 'w')
             writer = csv.writer(fileCSV)
             writer.writerow(rows)
