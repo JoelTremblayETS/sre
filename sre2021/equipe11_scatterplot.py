@@ -1,9 +1,13 @@
 import csv
 from datetime import datetime as dt, timedelta
 
-# Code inspiré à partir du lien:
-# https://stackoverflow.com/questions/30067772/how-to-find-earliest-and-latest-dates-from-a-csv-file-python
-# Ce script permet de trouver la première date et la date la plus récente dans chacun des fichiers csv
+
+"""
+Code inspiré à partir du lien:
+https://stackoverflow.com/questions/30067772/how-to-find-earliest-and-latest-dates-from-a-csv-file-python
+Ce script permet de trouver la première date et la date la plus récente dans chacun des fichiers csv.
+Une fois que le nombre de semaines est trouvé, on génère un graphe de nuage de points.
+"""
 with open('rootbeer_author_date.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     first = next(reader)

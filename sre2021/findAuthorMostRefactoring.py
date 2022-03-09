@@ -3,6 +3,12 @@ import json
 from collections import defaultdict
 from pydriller import Repository
 
+
+"""
+Ce script génère un fichier developer_most_refactorings.csv qui affiche les développeurs ayant effectué des
+opérations de refactorings. On compte le nombre de fois que le nom d'un dévelopeur apparaît après chaque analyse
+de commit avec PyDriller.
+"""
 with open('output.json') as json_file:
     data = json.load(json_file)
     rows = ["Developer", "Count"]

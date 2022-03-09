@@ -1,17 +1,21 @@
 import csv
 from pydriller import Repository
 
-# lstFiles = ['rootbeer.csv',
-#             'backpack.csv',
-#             'gpslogger.csv',
-#             'k-9.csv']
-lstFiles = ['k-9.csv']
 
-# lstRepos = ['https://github.com/scottyab/rootbeer.git',
-#             'https://github.com/Skyscanner/backpack.git',
-#             'https://github.com/mendhak/gpslogger.git',
-#             'https://github.com/k9mail/k-9.git']
-lstRepos = ['https://github.com/k9mail/k-9.git']
+"""
+Ce script analyse les fichiers .csv générés par CollectFiles.py. En utilisant PyDriller, on cherche le nom d'auteur
+et la date de modification de chaque fichier. Un fichier *_author_date.csv est généré pour chaque repo afin d'afficher
+le nom du développeur et la date de modification. Ce fichier est utile pour générer le graphe de nuage de points.
+"""
+lstFiles = ['rootbeer.csv',
+            'backpack.csv',
+            'gpslogger.csv',
+            'k-9.csv']
+
+lstRepos = ['https://github.com/scottyab/rootbeer.git',
+            'https://github.com/Skyscanner/backpack.git',
+            'https://github.com/mendhak/gpslogger.git',
+            'https://github.com/k9mail/k-9.git']
 index = 0
 for sourceFile in lstFiles:
     while index < len(lstRepos):
