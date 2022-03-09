@@ -18,7 +18,7 @@ for sourceFile in lstFiles:
         with open(sourceFile, newline='') as csvfile:
             file = sourceFile.split('.')[0]
             fileOutput = file + '_author_date.csv'
-            rows = ["Author", "Date", "Filename"]
+            rows = ["Author", "Date"]
             fileCSV = open(fileOutput, 'w')
             writer = csv.writer(fileCSV)
             writer.writerow(rows)
